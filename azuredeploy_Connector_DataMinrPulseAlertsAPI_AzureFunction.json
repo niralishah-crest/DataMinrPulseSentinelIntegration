@@ -40,7 +40,7 @@
             "type": "string",
             "defaultValue": ""
         },
-        "IncludeRelatedAlerts":{
+        "RelatedAlerts":{
             "type": "bool",
             "defaultValue": "True"
         },
@@ -189,7 +189,7 @@
                         "ClientSecret": "[parameters('ClientSecret')]",
                         "AlertType": "[parameters('AlertType')]",
                         "ListsNames": "[parameters('ListsNames')]",
-                        "IncludeRelatedAlerts": "[parameters('IncludeRelatedAlerts')]",
+                        "RelatedAlerts": "[parameters('RelatedAlerts')]",
                         "Schedule": "[parameters('Schedule')]",
                         "LogLevel": "[parameters('LogLevel')]",
                         "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/main/DataMinrPulseAlerts.zip?raw=true"
