@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "FunctionName": {
-            "defaultValue": "DataMinrPulseAlerts",
+            "defaultValue": "DataMinr",
             "minLength": 1,
             "maxLength": 11,
             "type": "string"
@@ -18,7 +18,7 @@
         },
         "Alerts_table_name":{
             "type": "string",
-            "defaultValue": "DataMinrPulse_Alerts_Data_CL"
+            "defaultValue": "DataMinrPulse_Alerts_Data"
         },
         "BaseURL": {
             "type": "string",
