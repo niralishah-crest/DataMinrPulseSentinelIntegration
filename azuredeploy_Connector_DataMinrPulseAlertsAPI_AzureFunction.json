@@ -16,7 +16,7 @@
             "type": "securestring",
             "defaultValue": "<workspaceKey>"
         },
-        "Alerts_table_name":{
+        "AlertsTableName":{
             "type": "string",
             "defaultValue": "DataMinrPulse_Alerts_Data"
         },
@@ -183,7 +183,7 @@
                         "logAnalyticsUri": "[variables('LogAnaltyicsUri')]",
                         "WorkspaceID": "[parameters('WorkspaceID')]",
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
-                        "Alerts_table_name": "[parameters('Alerts_table_name')]",
+                        "AlertsTableName": "[parameters('AlertsTableName')]",
                         "BaseURL": "[parameters('BaseURL')]",
                         "ClientId": "[parameters('ClientId')]",
                         "ClientSecret": "[parameters('ClientSecret')]",
