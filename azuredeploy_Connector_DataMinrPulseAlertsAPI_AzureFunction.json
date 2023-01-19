@@ -8,6 +8,47 @@
             "maxLength": 11,
             "type": "string"
         },
+        "BaseURL": {
+            "type": "string",
+            "defaultValue": "https://gateway.dataminr.com/"
+        },
+        "ClientId":{
+            "type": "securestring",
+            "defaultValue": "",
+            "minLength": 1
+        },
+        "ClientSecret":{
+            "type": "securestring",
+            "defaultValue": "",
+            "minLength": 1
+        },
+        "AlertType":{
+            "type": "string",
+            "defaultValue": "all"
+            "metadata": {
+                "description": "Provide an alert Type to get alerts specific to that type only."
+            }
+        },
+        "ListsNames":{
+            "type": "string",
+            "defaultValue": ""
+            "metadata": {
+                "description": "Provide name of watchlists(comma seperated values) configured on DataMinrPulse Portal."
+            }
+        },
+        "IncludeRelatedAlerts":{
+            "type": "bool",
+            "defaultValue": true
+        },
+        "AlertsTableName":{
+            "type": "string",
+            "minLength": 1,
+            "defaultValue": "DataMinrPulse_Alerts_Data"
+        },
+        "DataMinrPulseAlertsSchedule":{
+            "type": "string",
+            "defaultValue": "0 */15 * * * *"
+        },
         "WorkspaceID": {
             "type": "securestring",
             "defaultValue": "<workspaceID>"
@@ -15,39 +56,6 @@
         "WorkspaceKey": {
             "type": "securestring",
             "defaultValue": "<workspaceKey>"
-        },
-        "AlertsTableName":{
-            "type": "string",
-            "minLength": 1,
-            "defaultValue": "DataMinrPulse_Alerts_Data"
-        },
-        "BaseURL": {
-            "type": "string",
-            "defaultValue": "https://gateway.dataminr.com/"
-        },
-        "ClientId":{
-            "type": "securestring",
-            "defaultValue": "<client id>"
-        },
-        "ClientSecret":{
-            "type": "securestring",
-            "defaultValue": "<client secret>"
-        },
-        "AlertType":{
-            "type": "string",
-            "defaultValue": "all"
-        },
-        "ListsNames":{
-            "type": "string",
-            "defaultValue": ""
-        },
-        "IncludeRelatedAlerts":{
-            "type": "bool",
-            "defaultValue": true
-        },
-        "DataMinrPulseAlertsSchedule":{
-            "type": "string",
-            "defaultValue": "0 */15 * * * *"
         },
         "LogLevel": {
             "type": "string",
