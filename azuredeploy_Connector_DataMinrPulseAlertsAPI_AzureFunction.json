@@ -51,17 +51,16 @@
         },
         "WorkspaceID": {
             "type": "securestring",
-            "defaultValue": "<workspaceID>"
+            "defaultValue": "",
+            "minLength": 1
         },
         "WorkspaceKey": {
             "type": "securestring",
-            "defaultValue": "<workspaceKey>"
+            "defaultValue": "",
+            "minLength": 1
         },
         "LogLevel": {
             "type": "string",
-            "metadata": {
-                "description": "Debug, Info, Error, Warning"
-            },
             "allowedValues": [
             "Debug",
             "Info",
