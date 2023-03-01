@@ -3,72 +3,15 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "FunctionName": {
-            "defaultValue": "DMPulse",
+            "defaultValue": "DmPulse",
             "minLength": 1,
             "maxLength": 11,
             "type": "string"
         },
-        "BaseURL": {
-            "type": "string",
-            "defaultValue": "https://gateway.dataminr.com/"
-        },
-        "AZURE_CLIENT_ID":{
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Enter Azure Client Id that you have obtained after app registration."
-            }
-        },
-        "AZURE_CLIENT_SECRET":{
-            "type": "securestring",
-            "minLength": 1,
-            "metadata": {
-                "description": "Enter Azure Client Secret that you have created after registering the app."
-            }
-        },
-        "AZURE_TENANT_ID":{
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Enter Azure Tenant Id of your Azure Active Directory."
-            }
-        },
-        "KeyVaultName":{
-            "type": "string",
-            "minLength": 1,
-            "metadata": {
-                "description": "Enter Azure Keyvault name where you have stored client credentials of Dataminr Pulse."
-            }
-        },
-        "AlertType":{
-            "type": "string",
-            "defaultValue": "all",
-            "metadata": {
-                "description": "Provide an alert Type to get alerts specific to that type only."
-            }
-        },
-        "ListsNames":{
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Provide name of watchlists(comma seperated values) configured on DataMinrPulse Portal."
-            }
-        },
-        "IncludeRelatedAlerts":{
-            "type": "bool",
-            "defaultValue": true
-        },
         "AlertsTableName":{
             "type": "string",
             "minLength": 1,
-            "defaultValue": "DataMinrPulse_Alerts_Data"
-        },
-        "DataMinrPulseAlertsSchedule":{
-            "type": "string",
-            "defaultValue": "0 */15 * * * *",
-            "metadata": {
-                "description": "Enter a valid Quartz cron-expression. Default value is 15 mins.(0 */15 * * * *)"
-            }
+            "defaultValue": "DataminrPulse_Alerts_Data"
         },
         "WorkspaceID": {
             "type": "string",
@@ -220,15 +163,6 @@
                         "WorkspaceID": "[parameters('WorkspaceID')]",
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
                         "AlertsTableName": "[parameters('AlertsTableName')]",
-                        "BaseURL": "[parameters('BaseURL')]",
-                        "AZURE_CLIENT_ID": "[parameters('AZURE_CLIENT_ID')]",
-                        "AZURE_CLIENT_SECRET": "[parameters('AZURE_CLIENT_SECRET')]",
-                        "AZURE_TENANT_ID": "[parameters('AZURE_TENANT_ID')]",
-                        "KeyVaultName": "[parameters('KeyVaultName')]",
-                        "AlertType": "[parameters('AlertType')]",
-                        "ListsNames": "[parameters('ListsNames')]",
-                        "IncludeRelatedAlerts": "[parameters('IncludeRelatedAlerts')]",
-                        "DataMinrPulseAlertsSchedule": "[parameters('DataMinrPulseAlertsSchedule')]",
                         "LogLevel": "[parameters('LogLevel')]",
                         "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/main/DataMinrPulseAlerts.zip?raw=true"
                     }
