@@ -8,17 +8,36 @@
             "maxLength": 11,
             "type": "string"
         },
+        "BaseURL": {
+            "type": "string",
+            "defaultValue": "https://gateway-stage.dataminr.com/",
+            "minLength": 1
+        },
+        "ClientId":{
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Enter your Dataminr account clientid."
+            }
+        },
+        "ClientSecret":{
+            "type": "securestring",
+            "minLength": 1,
+            "metadata": {
+                "description": "Enter your Dataminr account clientsecret."
+            }
+        },
         "AlertsTableName":{
             "type": "string",
             "minLength": 1,
-            "defaultValue": "DataminrPulse_Alerts_Data"
+            "defaultValue": "DataminrPulseRTAPAlerts"
         },
         "WorkspaceID": {
             "type": "string",
             "minLength": 1
         },
         "WorkspaceKey": {
-            "type": "string",
+            "type": "securestring",
             "minLength": 1
         },
         "LogLevel": {
@@ -29,9 +48,9 @@
             "Error",
             "Warning"
             ],
-            "defaultValue": "Debug",
+            "defaultValue": "Info",
             "metadata": {
-                "description": "Select log level or log severity value from Debug, Info, Error, Warning. By default it is set to Debug."
+                "description": "Select log level or log severity value from Debug, Info, Error, Warning. By default it is set to Info."
             }
         }
     },
@@ -160,11 +179,14 @@
                         "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(resourceId('microsoft.insights/components', variables('FunctionName')), '2015-05-01').ConnectionString]",
                         "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', toLower(variables('FunctionName')),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower(variables('FunctionName'))), '2019-06-01').keys[0].value, ';EndpointSuffix=',toLower(variables('StorageSuffix')))]",
                         "logAnalyticsUri": "[variables('LogAnaltyicsUri')]",
+                        "BaseURL": "[parameters('BaseURL')]",
+                        "ClientId": "[parameters('ClientId')]",
+                        "ClientSecret": "[parameters('ClientSecret')]",
                         "WorkspaceID": "[parameters('WorkspaceID')]",
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
                         "AlertsTableName": "[parameters('AlertsTableName')]",
                         "LogLevel": "[parameters('LogLevel')]",
-                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/main/DataMinrPulseAlerts.zip?raw=true"
+                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/webhook-data/DataminrPulseAlertsRTAP.zip?raw=true"
                     }
                 }
             ]
