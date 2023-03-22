@@ -1,32 +1,32 @@
 {
-    "id": "DataMinrPulseAlertsConnector",
-    "title": "DataMinrPulseAlerts",
+    "id": "DataminrPulseAlertsConnector",
+    "title": "DataminrPulseAlerts",
     "publisher": "Dataminr Pulse",
     "descriptionMarkdown": "The Dataminr Pulse data connector enables security operations teams to integrate insights from Dataminr Pulse’s Data Observability services into Microsoft Sentinel. The insights include identification of anomalous filesystem behavior associated with ransomware and mass deletion, assess the blast radius of a ransomware attack, and sensitive data operators to prioritize and more rapidly investigate potential incidents.",
     "graphQueries": [
         {
             "metricName": "Total Alerts data received",
-            "legend": "DataMinrPulse_Alerts_Data_CL",
-            "baseQuery": "DataMinrPulse_Alerts_Data_CL"
+            "legend": "DataminrPulseRTAPAlertsData_CL",
+            "baseQuery": "DataminrPulseRTAPAlertsData_CL"
         }
     ],
     "sampleQueries": [
         {
             "description": "DataMinr Pulse Alerts Data for all alertTypes",
-            "query": "DataMinrPulse_Alerts_Data_CL\n | sort by TimeGenerated desc"
+            "query": "DataminrPulseRTAPAlertsData_CL\n | sort by TimeGenerated desc"
         }
     ],
     "dataTypes": [
         {
-            "name": "DataMinrPulse_Alerts_Data_CL",
-            "lastDataReceivedQuery": "DataMinrPulse_Alerts_Data_CL\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+            "name": "DataminrPulseRTAPAlertsData_CL",
+            "lastDataReceivedQuery": "DataminrPulseRTAPAlertsData_CL\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
         }
     ],
     "connectivityCriterias": [
         {
             "type": "IsConnectedQuery",
             "value": [
-                "DataMinrPulse_Alerts_Data_CL\n            | summarize LastLogReceived = max(TimeGenerated)\n            | project IsConnected = LastLogReceived > ago(30d)"
+                "DataminrPulseRTAPAlertsData_CL\n            | summarize LastLogReceived = max(TimeGenerated)\n            | project IsConnected = LastLogReceived > ago(30d)"
             ]
         }
     ],
@@ -67,7 +67,7 @@
     "instructionSteps": [
         {
             "title": "",
-            "description": ">**NOTE:** This connector uses Azure Functions to connect to the DataMinrPulse which pulls its logs using REST API and ingest into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details."
+            "description": ">**NOTE:** This connector uses Azure Functions to connect to the DataminrPulse in which logs are pushed via Dataminr RTAP and it will ingest logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details."
         },
         {
             "title": "",
@@ -99,7 +99,7 @@
         },
         {
             "title": "Option 1 - Azure Resource Manager (ARM) Template",
-            "description": "Use this method for automated deployment of the DataMinrPulse connector.\n\n1. Click the **Deploy to Azure** button below. \n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fniralishah-crest%2FDataMinrPulseSentinelIntegration%2Fmain%2Fazuredeploy_Connector_DataMinrPulseAlertsAPI_AzureFunction.json)\n2. Select the preferred **Subscription**, **Resource Group** and **Location**. \n3. Enter the below information : \n\t\tFunction Name \n\t\tWorkspace ID \n\t\tWorkspace Key \n\t\tAlertsTableName \n\t\tBaseURL \n\t\tClientId \n\t\tClientSecret \n\t\tAlertType \n\t\tListsNames \n\t\tIncludeRelatedAlerts \n\t\tDataMinrPulseAlertsSchedule \n\t\tLogLevel \n \n4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. \n5. Click **Purchase** to deploy."
+            "description": "Use this method for automated deployment of the DataMinrPulse connector.\n\n1. Click the **Deploy to Azure** button below. \n\n\t[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fniralishah-crest%2FDataMinrPulseSentinelIntegration%2Fwebhook-data%2Fazuredeploy_Connector_DataminrPulseAlertsAPI_AzureFunction.json)\n2. Select the preferred **Subscription**, **Resource Group** and **Location**. \n3. Enter the below information : \n\t\tFunction Name \n\t\tWorkspace ID \n\t\tWorkspace Key \n\t\tAlertsTableName \n\t\tBaseURL \n\t\tClientId \n\t\tClientSecret \n\t\tDataminrPulseAlertsSchedule \n\t\tLogLevel \n \n4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. \n5. Click **Purchase** to deploy."
         },
         {
             "title": "Option 2 - Manual Deployment of Azure Functions",
@@ -111,7 +111,23 @@
         },
         {
             "title": "",
-            "description": "**2. Configure the Function App**\n\n1. In the Function App, select the Function App Name and select **Configuration**.\n2. In the **Application settings** tab, select **+ New application setting**.\n3. Add each of the following application settings individually, with their respective values (case-sensitive): \n\t\tFunction Name \n\t\tWorkspace ID \n\t\tWorkspace Key \n\t\tAlertsTableName \n\t\tBaseURL \n\t\tClientId \n\t\tClientSecret \n\t\tAlertType \n\t\tListsNames \n\t\tIncludeRelatedAlerts \n\t\tDataMinrPulseAlertsSchedule \n\t\tLogLevel\n\t\tlogAnalyticsUri (optional)\n - Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: https://<CustomerId>.ods.opinsights.azure.us. \n4. Once all application settings have been entered, click **Save**."
+            "description": "**2. Configure the Function App**\n\n1. In the Function App, select the Function App Name and select **Configuration**.\n2. In the **Application settings** tab, select **+ New application setting**.\n3. Add each of the following application settings individually, with their respective values (case-sensitive): \n\t\tFunction Name \n\t\tWorkspace ID \n\t\tWorkspace Key \n\t\tAlertsTableName \n\t\tBaseURL \n\t\tClientId \n\t\tClientSecret \n\t\tDataminrPulseAlertsSchedule \n\t\tLogLevel\n\t\tlogAnalyticsUri (optional)\n - Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: https://<CustomerId>.ods.opinsights.azure.us. \n4. Once all application settings have been entered, click **Save**."
+        },
+        {
+            "title": "",
+            "description": "**Post Deployment steps**\n\n"
+        },
+        {
+            "title": "",
+            "description": "**STEP 1 - To get the Azure Function url**\n\n 1. Go to Azure function Overview page and Click on \"Functions\" in the left blade.\n 2. Click on the function called \"DataminrPulseAlertsSentinelConnector\".\n 3. Go to \"GetFunctionurl\" and copy the function url."
+        },
+        {
+            "title": "",
+            "description": "**STEP 2 - To add integration settings in Dataminr**\n\n 1. Go to Azure function Overview page and Click on \"Functions\" in the left blade.\n 2. Click on the function called \"DataminrPulseAlertsSentinelConnector\".\n 3. Go to \"Code + Test\" and click on \"Test/Run\".\n 4. Select HTTP Method as \"POST\" and Key as \"default(Function key)\".\n 5. In request Body, provide body as following:\n {'integration-settings': 'ADD', 'url': '<function-url>', 'token': '<Function access key>'}.\n 6. Click on Run.\n 7. You will receive integration setting Id in HTTP response with status code 200.\n 8. Save Integration Id for future reference."
+        },
+        {
+            "title": "",
+            "description": "*Now we are done with the adding integration settings for Dataminr RTAP. Once the Dataminr RTAP send an alert data, Function app is triggered and you should be able to see the Alerts data from the Dataminr Pulse into LogAnalytics workspace table called \"DataminrPulseRTAPAlertsData_CL\".*\n\n"
         }
     ]
 }
