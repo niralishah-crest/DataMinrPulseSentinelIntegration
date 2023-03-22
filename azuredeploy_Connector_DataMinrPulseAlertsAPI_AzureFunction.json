@@ -10,8 +10,10 @@
         },
         "BaseURL": {
             "type": "string",
-            "defaultValue": "https://gateway-stage.dataminr.com/",
-            "minLength": 1
+            "minLength": 1,
+            "metadata": {
+                "description": "Enter baseurl for your Dataminr account.(e.g. https://gateway-stage.dataminr.com/)"
+            }
         },
         "ClientId":{
             "type": "string",
@@ -186,7 +188,7 @@
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
                         "AlertsTableName": "[parameters('AlertsTableName')]",
                         "LogLevel": "[parameters('LogLevel')]",
-                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/webhook-data/DataminrPulseRTAPAlerts.zip?raw=true"
+                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/webhook-data/DataminrPulseAlertsRTAP.zip?raw=true"
                     }
                 }
             ]
