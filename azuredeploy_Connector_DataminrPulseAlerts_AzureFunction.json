@@ -194,7 +194,7 @@
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
                         "AlertsTableName": "[parameters('AlertsTableName')]",
                         "LogLevel": "[parameters('LogLevel')]",
-                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/webhook-durable/DataminrPulseAlerts.zip"
+                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/niralishah-crest/DataMinrPulseSentinelIntegration/blob/webhook-durable/DataminrPulseAlerts.zip?raw=true"
                     }
                 }
             ]
