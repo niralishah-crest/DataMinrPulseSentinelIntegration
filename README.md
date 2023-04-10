@@ -34,7 +34,7 @@ Dataminr Pulse Alerts Data Connector brings our AI-powered real-time intelligenc
 1. Obtain Dataminr Pulse user ID/password and API client ID/secret from your Dataminr Customer Success Manager (CSM).
 
 ### STEP 2 - Configure Watchlists in Dataminr Pulse portal.
-1. Login to the Dataminr Pulse website (app.dataminr.com).
+1. Login to the Dataminr Pulse [website](https://app.dataminr.com).
 2. Click on the settings gear icon, and select “Manage Lists.”
 3. Select the type of Watchlist you want to create (Cyber, Topic, Company, etc.) and click the “New List” button.
 4. Provide a name for your new Watchlist, and select a highlight color for it, or keep the default color.
@@ -81,13 +81,13 @@ And need to enter below information to configure DataminrPulse data connector fo
     2. Click on the function called "DataminrPulseAlertsHttpStarter".
     3. Go to "Code + Test" and click "Test/Run".
     4. Provide the necessary details as mentioned below:
-        - Select HTTP Method : "POST"
+        - HTTP Method : "POST"
         - Key : default(Function key)
         - Query : Name=functionName ,Value=DataminrPulseAlertsSentinelOrchestrator
         - Reuqest Body (case-sensitive): 
             {
                 "integration-settings": "ADD",
-                "url": "<url part from copied Function-url>",
+                "url": "<URL part from copied Function-url>",
                 "token": "<value of code parameter from copied Function-url>"
             }
     5. After providing all required details, click "Run".
